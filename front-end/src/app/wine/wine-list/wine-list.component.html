@@ -1,0 +1,25 @@
+<div>
+    <div class="row">
+        <div class="col">
+            <wc-search-form (onSearch)="searchByName($event)"></wc-search-form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <wc-table [wines]="wineList"
+            (wineDeleted) = "refreshWineList()"
+            (onSort) ="changeSortCriteria($event)"
+            ></wc-table>
+            <!-- nismo prosledjivali $event kod wineDeleted-id koji je TableComp prosledio, jer nam to sad ne treba, ali se lako izmeni ako se ukaze prilika -->
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <wc-pagination [totalItems]="count" [pageSize]="params.pageSize"
+			(onPageSelected)="changePage($event)" ></wc-pagination>
+        </div>
+    </div>
+</div>
